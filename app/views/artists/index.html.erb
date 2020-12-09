@@ -1,0 +1,13 @@
+<h1>Artistas</h1>
+<% @artists.each do |artista| %>
+  <span><%= artista.name %></span>
+  <ul>
+    <li>
+      nacionalidade:<%= artista.nationality %>
+    </li>
+    <li>
+      idade:<%= artista.age %>
+    </li>
+  </ul>
+<% end %>
+<%= link_to 'Criar novo artista', new_artist_path %>

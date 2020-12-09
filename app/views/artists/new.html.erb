@@ -1,0 +1,16 @@
+<h1>Criar artista</h1>
+<%= form_with model: @artist, url: new_artist_path, method: :post do |f| %>
+  <div class='form-group'>
+    <%= f.label :name, 'Nome do artista'%>
+    <%= f.text_field :name %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :nationality, 'Nacionalidade do artista'%>
+    <%= f.text_field :nationality %>
+  </div>
+  <div class='form-group'>
+    <%= f.label :age, 'Idade do artista'%>
+    <%= f.number_field :age %>
+  </div>
+  <%= f.submit 'Criar artista' %>
+<%end %>
