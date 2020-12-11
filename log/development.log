@@ -296,3 +296,648 @@ FOREIGN KEY ("artist_id")
   ↳ db/seeds.rb:10
   [1m[35m (4.3ms)[0m  [1m[36mcommit transaction[0m
   ↳ db/seeds.rb:10
+Started GET "/" for ::1 at 2020-12-11 18:18:10 -0300
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+):
+  
+activerecord (5.2.4.4) lib/active_record/migration.rb:579:in `check_pending!'
+activerecord (5.2.4.4) lib/active_record/migration.rb:556:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.6) lib/puma/configuration.rb:227:in `call'
+puma (3.12.6) lib/puma/server.rb:706:in `handle_request'
+puma (3.12.6) lib/puma/server.rb:476:in `process_client'
+puma (3.12.6) lib/puma/server.rb:334:in `block in run'
+puma (3.12.6) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ bin/rails:9
+  [1m[35m (12.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateArtists (20201209173627)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "nationality" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/migrate/20201209173627_create_artists.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201209173627"]]
+  ↳ bin/rails:9
+  [1m[35m (13.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+Migrating to CreateSongs (20201209173853)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE TABLE "songs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "releasedate" datetime, "explicit" boolean, "artist_id" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL, CONSTRAINT "fk_rails_5ce8fd4cc7"
+FOREIGN KEY ("artist_id")
+  REFERENCES "artists" ("id")
+)[0m
+  ↳ db/migrate/20201209173853_create_songs.rb:3
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE  INDEX "index_songs_on_artist_id" ON "songs" ("artist_id")[0m
+  ↳ db/migrate/20201209173853_create_songs.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20201209173853"]]
+  ↳ bin/rails:9
+  [1m[35m (6.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-12-11 21:18:52.564897"], ["updated_at", "2020-12-11 21:18:52.564897"]]
+  ↳ bin/rails:9
+  [1m[35m (5.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (5.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "nationality" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (11.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "songs"[0m
+  ↳ db/schema.rb:23
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "songs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "releasedate" datetime, "explicit" boolean, "artist_id" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:23
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE  INDEX "index_songs_on_artist_id" ON "songs" ("artist_id")[0m
+  ↳ db/schema.rb:23
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "artists"[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE TABLE "artists" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "age" integer, "nationality" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:15
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "songs"[0m
+  ↳ db/schema.rb:23
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "songs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "releasedate" datetime, "explicit" boolean, "artist_id" integer NOT NULL, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:23
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX "index_songs_on_artist_id" ON "songs" ("artist_id")[0m
+  ↳ db/schema.rb:23
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (12.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20201209173853)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (5.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20201209173627);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.3ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-12-11 21:19:09.697301"], ["updated_at", "2020-12-11 21:19:09.697301"]]
+  ↳ db/schema.rb:13
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Update (0.4ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = ?, "updated_at" = ? WHERE "ar_internal_metadata"."key" = ?[0m  [["value", "test"], ["updated_at", "2020-12-11 21:19:09.709926"], ["key", "environment"]]
+  ↳ bin/rails:9
+  [1m[35m (28.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[36mArtist Create (0.3ms)[0m  [1m[32mINSERT INTO "artists" ("name", "age", "nationality", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["name", "Baroes da Pisadinha"], ["age", 5], ["nationality", "Brazilian"], ["created_at", "2020-12-11 21:19:09.773736"], ["updated_at", "2020-12-11 21:19:09.773736"]]
+  ↳ db/seeds.rb:9
+  [1m[35m (5.6ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:9
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ db/seeds.rb:10
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mSong Create (0.4ms)[0m  [1m[32mINSERT INTO "songs" ("name", "releasedate", "explicit", "artist_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "Recairei"], ["releasedate", "2020-04-17 00:00:00"], ["explicit", 0], ["artist_id", 1], ["created_at", "2020-12-11 21:19:09.820623"], ["updated_at", "2020-12-11 21:19:09.820623"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (5.4ms)[0m  [1m[36mcommit transaction[0m
+  ↳ db/seeds.rb:10
+Started GET "/" for ::1 at 2020-12-11 18:19:35 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 2466ms (Views: 2454.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:30:37 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.7ms)
+Completed 500 Internal Server Error in 12220ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (couldn't find file 'jquery3' with type 'application/javascript'
+Checked in these paths: 
+  /home/gabrielcruz/RubymineProjects/musica/app/assets/config
+  /home/gabrielcruz/RubymineProjects/musica/app/assets/images
+  /home/gabrielcruz/RubymineProjects/musica/app/assets/javascripts
+  /home/gabrielcruz/RubymineProjects/musica/app/assets/stylesheets
+  /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/coffee-rails-4.2.2/lib/assets/javascripts
+  /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/actioncable-5.2.4.4/lib/assets/compiled
+  /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/activestorage-5.2.4.4/app/assets/javascripts
+  /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/actionview-5.2.4.4/lib/assets/compiled
+  /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/turbolinks-source-5.2.0/lib/assets/javascripts
+  /home/gabrielcruz/RubymineProjects/musica/node_modules
+  /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/popper_js-1.16.0/assets/javascripts
+  /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/bootstrap-4.5.3/assets/stylesheets
+  /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/bootstrap-4.5.3/assets/javascripts):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+  
+app/assets/javascripts/application.js:17
+app/views/layouts/application.html.erb:8:in `_app_views_layouts_application_html_erb__2025349582562596804_69987130709560'
+Started GET "/" for ::1 at 2020-12-11 18:31:36 -0300
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/gabrielcruz/.rvm/gems/ruby-2.5.5/gems/activerecord-5.2.4.4/lib/active_record/log_subscriber.rb:98
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 9743ms (Views: 9735.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists" for ::1 at 2020-12-11 18:31:54 -0300
+Processing by ArtistsController#index as HTML
+  Rendering artists/index.html.erb within layouts/application
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/views/artists/index.html.erb:2
+  Rendered artists/index.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 119ms (Views: 105.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:33:47 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 4185ms (Views: 4182.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:34:35 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Started GET "/" for ::1 at 2020-12-11 18:34:37 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 5024ms (Views: 5022.3ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 5090ms (Views: 5089.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:35:00 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 4168ms (Views: 4166.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:35:10 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 92ms (Views: 90.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:37:01 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2809ms (Views: 2807.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:37:56 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2720ms (Views: 2718.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:38:24 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2672ms (Views: 2670.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:38:46 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2750ms (Views: 2748.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:41:29 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2840ms (Views: 2837.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:41:44 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2629ms (Views: 2627.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:42:29 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2581ms (Views: 2579.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:42:47 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 92ms (Views: 90.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:43:05 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2528ms (Views: 2526.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:48:01 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2740ms (Views: 2738.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:49:24 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2745ms (Views: 2742.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:49:45 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2486ms (Views: 2484.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:50:35 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2547ms (Views: 2544.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:51:05 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 2788ms (Views: 2786.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:52:55 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2684ms (Views: 2682.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:53:21 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2786ms (Views: 2784.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:53:37 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 72ms (Views: 70.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:54:15 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2810ms (Views: 2808.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 18:59:23 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/gabrielcruz/RubymineProjects/musica/app/views/application/homepage.html.erb:2: syntax error, unexpected tLABEL, expecting keyword_do or '{' or '('
+... artistas', artists_path class:"botao");
+...                         ^~~~~~):
+  
+app/views/application/homepage.html.erb:2: syntax error, unexpected tLABEL, expecting keyword_do or '{' or '('
+Started GET "/" for ::1 at 2020-12-11 18:59:49 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2641ms (Views: 2639.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists" for ::1 at 2020-12-11 19:00:03 -0300
+Processing by ArtistsController#index as HTML
+  Rendering artists/index.html.erb within layouts/application
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/views/artists/index.html.erb:2
+  Rendered artists/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 123ms (Views: 120.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:01:42 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2772ms (Views: 2769.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:02:01 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2898ms (Views: 2897.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:02:25 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2607ms (Views: 2605.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:03:01 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3436ms (Views: 3435.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:03:23 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2641ms (Views: 2639.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:03:52 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2639ms (Views: 2637.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:04:11 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 2869ms (Views: 2867.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:04:35 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2624ms (Views: 2622.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:04:48 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2612ms (Views: 2609.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:05:35 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2710ms (Views: 2708.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:06:39 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2847ms (Views: 2845.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:08:21 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2845ms (Views: 2843.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:09:12 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2766ms (Views: 2764.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:10:07 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2692ms (Views: 2690.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists" for ::1 at 2020-12-11 19:10:11 -0300
+Processing by ArtistsController#index as HTML
+  Rendering artists/index.html.erb within layouts/application
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/views/artists/index.html.erb:2
+  Rendered artists/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 91ms (Views: 89.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:11:57 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2555ms (Views: 2553.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:12:29 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2679ms (Views: 2677.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:12:52 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 2931ms (Views: 2929.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artists" for ::1 at 2020-12-11 19:13:03 -0300
+Processing by ArtistsController#index as HTML
+  Rendering artists/index.html.erb within layouts/application
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  ↳ app/views/artists/index.html.erb:2
+  Rendered artists/index.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 121ms (Views: 119.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:15:04 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 2787ms (Views: 2785.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:19:42 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2900ms (Views: 2899.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:19:59 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 2541ms (Views: 2539.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:20:47 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 2484ms (Views: 2482.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:20:57 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 79ms (Views: 77.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:21:25 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2678ms (Views: 2675.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:22:16 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 2676ms (Views: 2674.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:24:02 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 2915ms (Views: 2913.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:26:42 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 87ms (Views: 83.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:27:40 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 3615ms (Views: 3612.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2020-12-11 19:28:13 -0300
+Processing by ApplicationController#homepage as HTML
+  Rendering application/homepage.html.erb within layouts/application
+  Rendered application/homepage.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 83ms (Views: 80.8ms | ActiveRecord: 0.0ms)
+
+
