@@ -13,3 +13,38 @@
  *= require_tree .
  *= require_self
  */
+
+@import "bootstrap";
+
+
+body {
+  background-image: url(imagem_bonita.jpg);
+  background-size: cover;
+
+  h1{
+    text-align: center;
+    font-family: 'JetBrains Mono', monospace;
+    color: rebeccapurple;
+    margin-top: 20vh;
+
+  }
+  p {
+    margin-top: 20px;
+  }
+
+  .botao {
+    border: solid 2px cyan;
+    border-radius: 10px;
+    padding: 5px;
+    background-color: lightskyblue;
+    color: purple;
+    transition: 0.5s all;
+  }
+
+  .botao:hover {
+    background-color: cyan;
+    color: #2E2F30;
+    text-decoration: none;
+  }
+}
+
